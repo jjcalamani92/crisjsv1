@@ -1,9 +1,9 @@
-import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
+import type { GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { LayoutPages, Routes, LayoutDashboard, LayoutAuth } from '../layouts'
 import { dehydrate, QueryClient } from '@tanstack/react-query';
-import { getSession, useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { graphQLClientS } from '../../graphql/react-query/graphQLClient'
 import { SITEV2 } from '../../graphql'
 import { paths } from '../../utils/functionV2'

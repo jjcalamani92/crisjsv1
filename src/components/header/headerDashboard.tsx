@@ -31,7 +31,8 @@ const userNavigation = [
 
 export const HeaderDashboard = () => {
   const {data:session, status} = useSession()
-  console.log(session, status);
+  console.log(session?.user?.image);
+  
   
   return (
     <>
@@ -94,7 +95,7 @@ export const HeaderDashboard = () => {
                         <div>
                           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                             <span className="sr-only">Open user menu</span>
-                            <Image width={35} height={35} objectFit="contain" className="rounded-full" src={user.imageUrl} alt="image description" />
+                            <Image width={35} height={35} objectFit="contain" className="rounded-full" src={session?.user?.image!} alt="image description" />
                           </Menu.Button>
                         </div>
                         <Transition
@@ -168,7 +169,7 @@ export const HeaderDashboard = () => {
                   <div className="flex items-center px-5">
                     <div className="flex-shrink-0">
                       {/* <img className="h-10 w-10 rounded-full" src={user.imageUrl} alt="" /> */}
-                      <Image width={35} height={35} objectFit="contain" className="rounded-full" src={user.imageUrl} alt="image description" />
+                      <Image width={35} height={35} objectFit="contain" className="rounded-full" src={session?.user?.image!} alt="image description" />
 
                     </div>
                     <div className="ml-3">
