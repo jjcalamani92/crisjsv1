@@ -38,13 +38,13 @@ export const Login = () => {
         <form className="space-y-4">
           <label className="block">
             <span className="block mb-1 text-xs font-medium text-gray-700">Your Email</span>
-            <input className="form-input" type="email" placeholder="Ex. james@bond.com" inputMode="email" required />
+            <input className="form-input" type="email" placeholder="" inputMode="email" required disabled/>
           </label>
           <label className="block">
             <span className="block mb-1 text-xs font-medium text-gray-700">Your Password</span>
-            <input className="form-input" type="password" placeholder="••••••••" required />
+            <input className="form-input" type="password" placeholder="" required disabled />
           </label>
-          <input type="submit" className="w-full py-3 btn btn-primary" defaultValue="Continue with email" />
+          <input type="submit" className="w-full py-3 btn btn-primary" defaultValue="Continue with email" disabled/>
         </form>
         <div className="my-2 text-center">
           <a href="#" className="text-sm text-gray-700 underline hover:text-indigo-700">Forgot password</a>
