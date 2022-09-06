@@ -42,7 +42,7 @@ export const LayoutDashboard: FC<LayoutDashboard> = ({ children }) => {
           <title>Dashboard</title>
           <meta name="keywords" />
 
-          <link rel="icon" href={"https://regalosterrakota.com/wp-content/uploads/2021/11/cropped-icono-web-hhh-180x180.jpg"} />
+          <link rel="icon" href={"/logo.svg"} />
         </Head>
         <HeaderDashboard />
         <Main>

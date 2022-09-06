@@ -1,7 +1,7 @@
 import type { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { FC } from 'react'
-import { LayoutPages, Routes, LayoutDashboard } from '../layouts'
+import { LayoutPages, Routes, LayoutDashboard, LayoutAuth } from '../layouts'
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { getSession, useSession } from 'next-auth/react';
 import { graphQLClientS } from '../../graphql/react-query/graphQLClient'
@@ -30,7 +30,9 @@ const Index: FC<Props> = () => {
       :
       query.slug && query.slug[0] === "auth" 
       ?
+      <LayoutAuth >
         <Routes />
+      </LayoutAuth>
       :
       <LayoutPages site={site!}>
         <Routes />
