@@ -97,7 +97,7 @@ export const HeaderPage = () => {
                 width={40}
                 height={40}
                 objectFit="cover"
-                src="/logo.svg"
+                src="https://res.cloudinary.com/dqsbh2kn0/image/upload/v1662447369/qgy7hht1b12tfc8tyrx8.jpg"
                 alt="Workflow"
               />
             </a>
@@ -306,7 +306,7 @@ export const HeaderPage = () => {
                     width={40}
                     height={40}
                     objectFit="cover"
-                    src="/logo.svg"
+                    src="https://res.cloudinary.com/dqsbh2kn0/image/upload/v1662447369/qgy7hht1b12tfc8tyrx8.jpg"
                     alt="Workflow"
                   />
                 </div>
