@@ -18,7 +18,7 @@ export const Hero: FC<Props> = ({ title}) => {
   // const { h1, span, p, imageSrc, imageAlt } = contain
   return (
 
-      <div className="px-4 py-24 mx-auto max-w-7xl">
+      <div className="px-4 py-24 mx-auto max-w-7xl z-0">
 
         <div className="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
           <h1 className="mb-6 text-5xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
