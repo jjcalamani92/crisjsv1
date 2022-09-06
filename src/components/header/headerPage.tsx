@@ -360,9 +360,11 @@ export const HeaderPage = () => {
                 </a>
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{' '}
-                  <a href="#" className="text-indigo-600 hover:text-indigo-500">
+                  <Link href="/auth/login" >
+                  <a className="text-indigo-600 hover:text-indigo-500">
                     Sign in
                   </a>
+                  </Link>
                 </p>
               </div>
             </div>
