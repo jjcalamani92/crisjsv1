@@ -277,7 +277,7 @@ export const ModalChildrenCreatedAntd: FC<ModalChildrenCreatedAntd> = ({ openMCC
                       <Input.TextArea rows={5}  showCount maxLength={1000} />
                     </Form.Item>
                     {
-                      type === 'page' ?
+                      type === 'page' || query.length === 3 ?
                         <Form.Item
                         name="type"
                         label="Type Page"
