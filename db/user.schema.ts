@@ -3,7 +3,7 @@ import mongoose, { Schema, model, Model } from 'mongoose';
 // import { UserS } from '../interfaces/User';
 export interface UserS {
 	_id      : string;
-	username     : string;
+	name     : string;
 	email    : string;
 	password?: string;
 	role     : string;
@@ -17,7 +17,7 @@ export interface UserS {
 }
 
 const userSchema = new Schema({
-    username    : { type: String, required: true },
+    name    : { type: String, required: true },
     email   : { type: String, required: true, unique: true },
     password: { type: String, required: true },
     role: {
@@ -39,7 +39,7 @@ const userSchema = new Schema({
 
 const User:Model<UserS> = mongoose.models.User || model('User',userSchema);
 userSchema.pre<UserS>('save', function (next) {
-  this.username = this.username.toLowerCase();
+  this.name = this.name.toLowerCase();
   this.email = this.email.toLowerCase();
   next();
 });

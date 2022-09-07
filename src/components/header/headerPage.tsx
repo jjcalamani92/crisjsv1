@@ -160,7 +160,7 @@ export const HeaderPage = () => {
                             <div key={item.name} className="flow-root">
                               <a
                                 href={item.href}
-                                className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:bg-gray-100"
+                                className="-m-3 flex items-center rounded-md p-3 text-base font-medium text-gray-900 hover:text-indigo-600 hover:bg-gray-100"
                               >
                                 <item.icon className="h-6 w-6 flex-shrink-0 text-gray-400" aria-hidden="true" />
                                 <span className="ml-3">{item.name}</span>
@@ -272,7 +272,7 @@ export const HeaderPage = () => {
 
               <a
 
-                className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                className="ml-8 inline-flex items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-base font-medium text-white hover:text-white shadow-sm hover:bg-indigo-700"
               >
                 Sign up
               </a>

@@ -9,7 +9,7 @@ interface Sidebar {
 export const Sidebar: FC<Sidebar> = ({ children }) => {
   const {push} = useRouter()
   const { data: session, status } = useSession()
-  // console.log(session?.user);
+  // console.log(session);
   
   // console.log(role, username, image);
   
@@ -100,8 +100,8 @@ export const Sidebar: FC<Sidebar> = ({ children }) => {
                       </svg>
                     </div>
                   </div>
-                  <ul aria-orientation="vertical" className=" py-6">
-                    <li className="pl-6 cursor-pointer text-white text-sm leading-3 tracking-normal pb-4 pt-5 text-indigo-700 focus:text-indigo-700 focus:outline-none">
+                  <ul  className=" py-6">
+                    <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal pb-4 pt-5 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
                       <div className="flex items-center">
                         <div className="w-6 h-6 md:w-8 md:h-8">
                           <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-grid" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -113,6 +113,16 @@ export const Sidebar: FC<Sidebar> = ({ children }) => {
                           </svg>
                         </div>
                         <span className="ml-2 xl:text-base md:text-2xl text-base">Dashboard</span>
+                      </div>
+                    </li>
+                          
+                    <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-4 mb-4 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none" onClick={() => push('/dashboard/sites')}>
+                      <div className="flex items-center">
+                        <div className="w-6 h-6 md:w-8 md:h-8">
+                        <FolderOpenOutlined style={{ fontSize: '20px' }}/>
+
+                        </div>
+                        <span className="ml-2 xl:text-base md:text-2xl text-base">Sites</span>
                       </div>
                     </li>
                     <li className="pl-6 cursor-pointer text-gray-600 text-sm leading-3 tracking-normal mt-4 mb-4 py-2 hover:text-indigo-700 focus:text-indigo-700 focus:outline-none">
@@ -169,8 +179,13 @@ export const Sidebar: FC<Sidebar> = ({ children }) => {
                   <div className="border-t border-gray-300">
                     <div className="w-full flex items-center justify-between px-6 pt-1">
                       <div className="flex items-center">
-                        <img alt="profile-pic" src="https://tuk-cdn.s3.amazonaws.com/assets/components/boxed_layout/bl_1.png" className="w-8 h-8 rounded-md" />
-                        <p className="md:text-xl text-gray-800 text-base leading-4 ml-2">Jane Doe</p>
+                          {
+                            session &&
+                            <>
+                          <Image width={40} height={40} className="rounded-full object-cover" src={session.user?.image!} alt="avatar" />
+                          <p className="md:text-xl text-gray-800 text-base leading-4 ml-2">{session.user?.name }</p>
+                            </>
+                          }
                       </div>
                       <ul className="flex">
                         <li className="cursor-pointer text-white pt-5 pb-3">
@@ -269,7 +284,7 @@ export const Sidebar: FC<Sidebar> = ({ children }) => {
                       </div>
                       {
                         session &&
-                        <p className="text-gray-800 text-sm mx-3">User Name</p>
+                        <p className="text-gray-800 text-sm mx-3">{session.user?.name}</p>
                       }
                       <div className="cursor-pointer text-gray-600">
                         <svg aria-haspopup="true" xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-chevron-down" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">

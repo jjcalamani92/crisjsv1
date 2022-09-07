@@ -1,5 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { FC, Fragment } from 'react'
+import { FC, Fragment, useState } from 'react'
 import {
   BriefcaseIcon,
   CalendarIcon,
@@ -12,12 +12,20 @@ import {
 } from '@heroicons/react/20/solid'
 import { Menu, Transition } from '@headlessui/react'
 import { classNames } from '../../../utils/function'
+import { FolderAddOutlined } from '@ant-design/icons'
+import { ModalSiteAntd } from '../form'
 
 interface HeadingSiteDashboard {
   title: string
+  
 }
 
 export const HeadingSiteDashboard:FC<HeadingSiteDashboard> = ({title}) => {
+
+  const addHandle = () => {
+    setOpenMSD(true)
+  }
+  const [openMSD, setOpenMSD] = useState(false)
   return (
     <div className="lg:flex lg:items-center lg:justify-between mb-4">
       <div className="min-w-0 flex-1">
@@ -68,9 +76,11 @@ export const HeadingSiteDashboard:FC<HeadingSiteDashboard> = ({title}) => {
           <button
             type="button"
             className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            onClick={() => addHandle()}
           >
-            <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-            Publish
+
+            <FolderAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
+            Add Site
           </button>
         </span>
 
@@ -114,6 +124,7 @@ export const HeadingSiteDashboard:FC<HeadingSiteDashboard> = ({title}) => {
             </Menu.Items>
           </Transition>
         </Menu>
+        <ModalSiteAntd openMSD={openMSD} setOpenMSD={setOpenMSD}  /> 
       </div>
     </div>
   )

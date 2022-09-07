@@ -18,13 +18,13 @@ export const checkUserEmailPassword = async( email: string, password: string ) =
         return null;
     }
 
-    const { role, username, _id, image } = user;
+    const { role, name, _id, image } = user;
 
     return {
         _id,
         email: email.toLocaleLowerCase(),
         role,
-        username,
+        name,
         image
     }
 }
@@ -38,14 +38,14 @@ export const oAUthToDbUser = async( oAuthEmail: string, oAuthUserName: string, o
 
     if ( user ) {
         await db.disconnect();
-        const { _id, username, email, role, image } = user;
-        return { _id, username, email, role, image };
+        const { _id, name, email, role, image } = user;
+        return { _id, name, email, role, image };
     }
 
-    const newUser = new User({ email: oAuthEmail.toLowerCase(), username: oAuthUserName.toLowerCase(), password: '@', role: 'USER_ROL', image: oAuthPicture });
+    const newUser = new User({ email: oAuthEmail.toLowerCase(), name: oAuthUserName.toLowerCase(), password: '@', role: 'USER_ROL', image: oAuthPicture });
     await newUser.save();
     await db.disconnect();
 
-    const { _id, username, email, role, image } = newUser;
-    return { _id, username, email, role, image };    
+    const { _id, name, email, role, image } = newUser;
+    return { _id, name, email, role, image };    
 }
