@@ -117,7 +117,7 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
              onClick={() => addHandle()}
            >
              <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
-             { children?.type === 'page' && query.length !== 3 ? 'Add Category' : 'Add Page'}
+             { children?.type === 'ecommerce' && query.length !== 3 ? 'Add Category' : 'Add Page'}
            </button>
          </span>
             :
@@ -137,14 +137,13 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
          </span>
         }
         {
-          children?.type! === 'blog' &&
+          children?.type === 'blog' &&
           <span className="sm:ml-3">
            <button
              type="button"
              className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
              onClick={() => addHandle()}
            >
-            {/* <FileAddOutlined /> */}
             <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
              Add Blog
            </button>
