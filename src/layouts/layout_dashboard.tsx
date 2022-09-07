@@ -5,6 +5,8 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { HeaderDashboard } from '../components/header/headerDashboard';
 import { Main } from '../components/main';
+import { Notification } from '../components/notification';
+import { Sidebar } from '../components/header/sidebar';
 
 
 interface LayoutDashboard {
@@ -25,10 +27,14 @@ export const LayoutDashboard: FC<LayoutDashboard> = ({ children }) => {
 
           <link rel="icon" href={"/logo.svg"} />
         </Head>
-        <HeaderDashboard />
-        <Main>
+        {/* <HeaderDashboard /> */}
+        <Sidebar>
           {children}
-        </Main>
+        </Sidebar>
+        {/* <h1>Hola</h1> */}
+        {/* <Notification /> */}
+        {/* <Main> */}
+        {/* </Main> */}
         
       </div>
     </>

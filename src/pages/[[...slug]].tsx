@@ -5,9 +5,10 @@ import { LayoutPages, Routes, LayoutDashboard, LayoutAuth } from '../layouts'
 import { dehydrate, QueryClient } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
 import { graphQLClientS } from '../../graphql/react-query/graphQLClient'
-import { SITEV2 } from '../../graphql'
+import { SITESV2, SITEV2 } from '../../graphql'
 import { paths } from '../../utils/functionV2'
 import { useGetSite } from '../../graphql/react-query/reactQuery';
+import { getQuery, getURL, capitalizar } from '../../utils/functionV3';
 
 
 interface Props {
@@ -15,26 +16,30 @@ interface Props {
 }
 
 const Index: FC<Props> = () => {
-  const { query, asPath } = useRouter()
-  const { data: site } = useGetSite(process.env.API_SITE!);
+  const { asPath } = useRouter()
+  const query = getQuery(asPath)
   const { data:session, status } = useSession()
-  console.log(session);
+
+  // console.log(getQuery(asPath).at(1));
+  
+  
+  // console.log(new Date("2022-10-06T23:32:57.129Z"));
   return (
     <>
       {
-      query.slug && query.slug[0] === "dashboard"   
+      query && query[0] === "dashboard"   
       ?
         <LayoutDashboard >
           <Routes />
         </LayoutDashboard>
       :
-      query.slug && query.slug[0] === "auth" 
+      query && query[0] === "auth" 
       ?
       <LayoutAuth >
         <Routes />
       </LayoutAuth>
       :
-      <LayoutPages site={site!}>
+      <LayoutPages >
         <Routes />
       </LayoutPages>
     }
@@ -70,7 +75,12 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
     );
     return siteV2;
   })
-
+  await queryClient.prefetchQuery(["get-sites"], async () => {
+    const { sitesV2 } = await graphQLClientS.request(
+      SITESV2
+    );
+    return sitesV2;
+  })
   // await queryClient.prefetchQuery(["get-products-furniture", site], async () => {
   //   const { furnitures } = await graphQLClientP.request( FURNITURIES, { site } );
   //   return furnitures;

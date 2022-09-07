@@ -15,7 +15,6 @@ const nextConfig = {
 		MONGO_URL: process.env.MONGO_URL,
 		PORT: process.env.PORT,
 		NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
-		JWT_SECRET: process.env.JWT_SECRET,
 		NEXTAUTH_URL: process.env.NEXTAUTH_URL,
 
 	},

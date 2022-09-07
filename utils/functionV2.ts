@@ -1,5 +1,5 @@
 
-import { getQuery } from "./function";
+import { getQuery } from "./functionV3";
 import { ChildrenV2, SiteV2 } from "../interfaces/siteV2";
 import { ProductV2, ProductsV2 } from '../interfaces/ecommerceV2';
 import { BlogV2 } from "../interfaces/blogV2";

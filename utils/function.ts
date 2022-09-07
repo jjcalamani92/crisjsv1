@@ -18,55 +18,55 @@ if (!Array.prototype.compacta) {
   };
 }
 
-export function capitalizar(str: string) {
-  return str
-    .trim()
-    .replace(/\s+/g, " ")
-    .replace(/\w\S*/g, function (txt) {
-      return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase();
-    });
-}
-export function capitalizar0(palabras: string) {
-  return palabras.split(" ").map(palabra => palabra[0].toUpperCase() + palabra.substring(1)
-).join(" ");
-}
+// export function capitalizar(str: string) {
+//   return str
+//     .trim()
+//     .replace(/\s+/g, " ")
+//     .replace(/\w\S*/g, function (txt) {
+//       return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase();
+//     });
+// }
+// export function capitalizar0(palabras: string) {
+//   return palabras.split(" ").map(palabra => palabra[0].toUpperCase() + palabra.substring(1)
+// ).join(" ");
+// }
 
-export function slug(str: string) {
-  return str
-    .trim()
-    .toLowerCase()
-    .replace(/[\u002F]/g, "")
-    .replace(/-/g, " ")
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/-/g, "")
-    .replace(/\s+/g, " ")
-    .replace(/ /g, "-");
-}
+// export function slug(str: string) {
+//   return str
+//     .trim()
+//     .toLowerCase()
+//     .replace(/[\u002F]/g, "")
+//     .replace(/-/g, " ")
+//     .normalize("NFD")
+//     .replace(/[\u0300-\u036f]/g, "")
+//     .replace(/-/g, "")
+//     .replace(/\s+/g, " ")
+//     .replace(/ /g, "-");
+// }
 
-export const getURL = (asPath: string) => {
-  let url = asPath.split("/");
-  url.length = url.length - 1;
-  return url.join("/");
-};
+// export const getURL = (asPath: string) => {
+//   let url = asPath.split("/");
+//   url.length = url.length - 1;
+//   return url.join("/");
+// };
 
-export const seo = (site: Site, asPath: string) => {
-  const path = lastElement(asPath)
-  return site.children.find(data => path === '' ? data.slug === 'home' : data.slug === path)?.head
-};
-export const seo2 = (site: Site, asPath: string) => {
-  const path = lastElement(asPath)
-  return site.children.find(data => path === '' ? data.slug === 'home' : data.slug === path)?.head
-};
+// export const seo = (site: Site, asPath: string) => {
+//   const path = lastElement(asPath)
+//   return site.children.find(data => path === '' ? data.slug === 'home' : data.slug === path)?.head
+// };
+// export const seo2 = (site: Site, asPath: string) => {
+//   const path = lastElement(asPath)
+//   return site.children.find(data => path === '' ? data.slug === 'home' : data.slug === path)?.head
+// };
 
-export const getQuery = (asPath: string) => {
-  return asPath.slice(1).split("/");
-};
+// export const getQuery = (asPath: string) => {
+//   return asPath.slice(1).split("/");
+// };
 
-export const lastElement = (asPath: string): string => {
-  let url = getQuery(asPath);
-  return url[url.length - 1];
-};
+// export const lastElement = (asPath: string): string => {
+//   let url = getQuery(asPath);
+//   return url[url.length - 1];
+// };
 
 export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");

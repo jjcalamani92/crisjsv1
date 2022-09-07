@@ -91,17 +91,17 @@ export const HeaderPage = () => {
         <div className="flex items-center justify-between  py-6 md:justify-start md:space-x-10">
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href="/">
-            <a>
-              <span className="sr-only">Workflow</span>
-              <Image
-                width={40}
-                height={40}
-                objectFit="cover"
-                src="https://res.cloudinary.com/dqsbh2kn0/image/upload/v1662447369/qgy7hht1b12tfc8tyrx8.jpg"
-                alt="Workflow"
-              />
-            </a>
-                </Link>
+              <a>
+                <span className="sr-only">Workflow</span>
+                <Image
+                  width={40}
+                  height={40}
+                  objectFit="cover"
+                  src="https://res.cloudinary.com/dqsbh2kn0/image/upload/v1662447369/qgy7hht1b12tfc8tyrx8.jpg"
+                  alt="Workflow"
+                />
+              </a>
+            </Link>
           </div>
           <div className="-my-2 -mr-2 md:hidden">
             <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -174,17 +174,19 @@ export const HeaderPage = () => {
                 </>
               )}
             </Popover>
+            <Link href="/pricing">
 
-            <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Pricing
-            </a>
+              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+                Pricing
+              </a>
+            </Link>
             <a href="#" className="text-base font-medium text-gray-500 hover:text-gray-900">
               Docs
             </a>
             <Link href="/dashboard">
-            <a  className="text-base font-medium text-gray-500 hover:text-gray-900">
-              Dashboard
-            </a>
+              <a className="text-base font-medium text-gray-500 hover:text-gray-900">
+                Dashboard
+              </a>
             </Link>
 
             <Popover className="relative">
@@ -334,9 +336,11 @@ export const HeaderPage = () => {
             </div>
             <div className="space-y-6 py-6 px-5">
               <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
-                  Pricing
-                </a>
+                <Link href="/pricing">
+                  <a className="text-base font-medium text-gray-900 hover:text-gray-700">
+                    Pricing
+                  </a>
+                </Link>
 
                 <a href="#" className="text-base font-medium text-gray-900 hover:text-gray-700">
                   Docs
@@ -361,9 +365,9 @@ export const HeaderPage = () => {
                 <p className="mt-6 text-center text-base font-medium text-gray-500">
                   Existing customer?{' '}
                   <Link href="/auth/login" >
-                  <a className="text-indigo-600 hover:text-indigo-500">
-                    Sign in
-                  </a>
+                    <a className="text-indigo-600 hover:text-indigo-500">
+                      Sign in
+                    </a>
                   </Link>
                 </p>
               </div>

@@ -9,7 +9,7 @@ import { Main } from "../components/main";
 interface Layout {
 	seo?: SeoV2 ;
 	children?: React.ReactNode;
-	site: SiteV2
+	site?: SiteV2
 }
 
 export const LayoutPages: FC<Layout> = ({
