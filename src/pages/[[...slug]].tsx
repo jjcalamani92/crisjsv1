@@ -11,47 +11,65 @@ import { getQuery, getURL, capitalizar } from '../../utils/functionV3';
 
 
 interface Props {
-  
+
 }
 
 const Index: FC<Props> = () => {
   const { asPath } = useRouter()
   const query = getQuery(asPath)
-  const { data:session, status } = useSession()
+  const { data: session, status } = useSession()
   // console.log(paths(siteV2));
-  
+
   // console.log(getQuery(asPath).at(1));
-  
-  
-  // console.log(new Date("2022-10-06T23:32:57.129Z"));
-  return (
-    <>
-      {
-      query && query[0] === "dashboard"   
-      ?
+  switch (true) {
+    case query && query[0] === "dashboard":
+      return (
         <LayoutDashboard >
           <Routes />
-        </LayoutDashboard>
-      :
-      query && query[0] === "auth" 
-      ?
-      <LayoutAuth >
-        <Routes />
-      </LayoutAuth>
-      :
-      <LayoutPages >
-        <Routes />
-      </LayoutPages>
-    }
-      
-    </>
-  )
+        </LayoutDashboard>)
+    case query && query[0] === "auth":
+      return (
+        <LayoutAuth >
+          <Routes />
+        </LayoutAuth>)
+
+    default:
+      return (
+        <LayoutPages >
+          <Routes />
+        </LayoutPages>
+      )
+  }
+
+  // // console.log(new Date("2022-10-06T23:32:57.129Z"));
+  // return (
+  //   <>
+  //     {
+  //       query && query[0] === "dashboard"
+  //         ?
+  //         <LayoutDashboard >
+  //           <Routes />
+  //         </LayoutDashboard>
+  //         :
+  //         query && query[0] === "auth"
+  //           ?
+  //           <LayoutAuth >
+  //             <Routes />
+  //           </LayoutAuth>
+  //           :
+  //           <LayoutPages >
+  //             <Routes />
+  //           </LayoutPages>
+  //     }
+
+  //   </>
+  // )
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { siteV2 } = await graphQLClientS.request(SITEV2, { _id: process.env.API_SITE })
   return {
-    paths: paths(siteV2).map(data =>( {params: data})),
+    paths: paths(siteV2).map(data => ({ params: data })),
     // paths: [{ params: { slug: [] } }],
     fallback: 'blocking'
   };
@@ -59,16 +77,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context: any) => {
   const { params } = context
-  
-  
-  
+
+
+
   const { slug = [] } = params as { slug: string[] }
   const _id = process.env.API_SITE!
   const site = process.env.API_SITE
 
   const queryClient = new QueryClient()
-  
-  await queryClient.prefetchQuery(["get-site", _id],  async () => {
+
+  await queryClient.prefetchQuery(["get-site", _id], async () => {
     const { siteV2 } = await graphQLClientS.request(
       SITEV2,
       { _id }

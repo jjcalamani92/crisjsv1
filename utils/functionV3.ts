@@ -85,6 +85,28 @@ export const getChildren5 = (sites: SiteV2[], asPath: string) => {
   return getChildrens5(sites, asPath)?.find((data) => data.slug === query[8]);
 };
 
+export const getChildren = (sites:SiteV2[], asPath:string) => {
+  const query = getQuery(asPath);
+  if (query.length === 4) {
+    return getChildren0(sites, asPath)
+  } else 
+  if (query.length === 5) {
+    return getChildren1(sites, asPath)
+  } else
+  if (query.length === 6) {
+    return getChildren2(sites, asPath)
+  } else
+  if (query.length === 7) {
+    return getChildren3(sites, asPath)
+  } else
+  if (query.length === 8) {
+    return getChildren4(sites, asPath)
+  } else
+  if (query.length === 9) {
+    return getChildren5(sites, asPath)
+  } 
+}
+
 //TODO: PATHS TODO:
 export const getSitesAsPaths = (sites: SiteV2[]) => {
   return sites.map((data) => `/dashboard/sites/${data._id}`);

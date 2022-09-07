@@ -35,13 +35,13 @@ interface Option {
   children?: Option[];
 }
 
-interface ModalChildrenAntd {
-  openMCD: boolean
-  setOpenMCD: React.Dispatch<React.SetStateAction<boolean>>
+interface ModalChildrenUpdateAntd {
+  openMCUD: boolean
+  setOpenMCUD: React.Dispatch<React.SetStateAction<boolean>>
   children?: ChildrenV2
 }
 
-export const ModalChildrenAntd: FC<ModalChildrenAntd> = ({ openMCD, setOpenMCD, children }) => {
+export const ModalChildrenUpdateAntd: FC<ModalChildrenUpdateAntd> = ({ openMCUD, setOpenMCUD, children }) => {
 
   
   
@@ -196,8 +196,8 @@ export const ModalChildrenAntd: FC<ModalChildrenAntd> = ({ openMCD, setOpenMCD, 
     setRadioValue(e.target.value);
   };
   return (
-    <Transition.Root show={openMCD} as={Fragment}>
-      <Dialog as="div" className="relative z-30" initialFocus={cancelButtonRef} onClose={setOpenMCD}>
+    <Transition.Root show={openMCUD} as={Fragment}>
+      <Dialog as="div" className="relative z-30" initialFocus={cancelButtonRef} onClose={setOpenMCUD}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -293,7 +293,9 @@ export const ModalChildrenAntd: FC<ModalChildrenAntd> = ({ openMCD, setOpenMCD, 
                           <Radio.Button value="service">Services</Radio.Button>
                         </Radio.Group>
                       </Form.Item>
-                        {/* <Form.Item name="type" label="" className='col-span-2'>
+                      {
+                        radioValue === "ecommerce" &&
+                        <Form.Item name="type" label="" className='col-span-2'>
                           <Radio.Group>
                             <Radio value="wear">Ropa</Radio>
                             <Radio value="furniture">Muebles</Radio>
@@ -308,8 +310,8 @@ export const ModalChildrenAntd: FC<ModalChildrenAntd> = ({ openMCD, setOpenMCD, 
                             <Radio value="6">item 2</Radio>
                             <Radio value="7">item 3</Radio>
                           </Radio.Group>
-                        </Form.Item> */}
-                        
+                        </Form.Item>
+                        }
 
                     <Form.Item
                       label="Add Image"
@@ -345,7 +347,7 @@ export const ModalChildrenAntd: FC<ModalChildrenAntd> = ({ openMCD, setOpenMCD, 
                       <button
                         type="submit"
                         className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-indigo-600 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  sm:w-auto sm:text-sm"
-                        onClick={() => setOpenMCD(false)}
+                        onClick={() => setOpenMCUD(false)}
                       >
                         {
                           children ? 'Updated'
@@ -355,7 +357,7 @@ export const ModalChildrenAntd: FC<ModalChildrenAntd> = ({ openMCD, setOpenMCD, 
                       <button
                         type="button"
                         className=" w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500  sm:w-auto sm:text-sm"
-                        onClick={() => setOpenMCD(false)}
+                        onClick={() => setOpenMCUD(false)}
                         ref={cancelButtonRef}
                       >
                         Cancel

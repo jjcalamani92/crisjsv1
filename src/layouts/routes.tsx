@@ -24,6 +24,5 @@ export const Routes: FC<Routes> = ({ }) => {
       return <Login />
     default:
       return null
-
   }
 }

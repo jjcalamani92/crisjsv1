@@ -72,7 +72,7 @@ export const CardSiteDashboard:FC<CardSiteDashboard> = ({ site}) => {
         >
           <Meta
             title={site.data.name}
-            description={site.data.description}
+            // description={site.data.description}
 
           />
         </Card>

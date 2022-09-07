@@ -1,3 +1,4 @@
+/* eslint-disable react/no-children-prop */
 /* This example requires Tailwind CSS v2.0+ */
 import { FC, Fragment, useState } from 'react'
 import {
@@ -12,9 +13,9 @@ import {
 } from '@heroicons/react/20/solid'
 import { Menu, Transition } from '@headlessui/react'
 import { classNames } from '../../../utils/function'
-import { ModalChildrenAntd, ModalSiteAntd } from '../form'
+import { ModalChildrenAntd, ModalChildrenCreatedAntd, ModalChildrenUpdateAntd, ModalSiteAntd } from '../form'
 import { EditOutlined, FileAddOutlined } from '@ant-design/icons'
-import { getSite } from '../../../utils/functionV3'
+import { getChildren, getChildren0, getQuery, getSite } from '../../../utils/functionV3'
 import { useRouter } from 'next/router'
 import { useGetSites } from '../../../graphql/react-query/reactQuery'
 
@@ -24,21 +25,36 @@ interface HeadingChildrenDashboard {
 
 export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) => {
   const { asPath } = useRouter()
+  const query = getQuery(asPath)
+  // console.log(query.length);
+  
   const { data: sites } = useGetSites();
 
   const site = getSite(sites!, asPath)
-  // console.log(site);
-  
+  const children = getChildren(sites!, asPath)
+  console.log(children);
+
   const [data, setData] = useState<any>()
   const [openMSD, setOpenMSD] = useState(false)
   const [openMCD, setOpenMCD] = useState(false)
+  const [openMCUD, setOpenMCUD] = useState(false)
+  const [openMCCD, setOpenMCCD] = useState(false)
   const addHandle = () => {
-    setOpenMCD(true)
-
+    setOpenMCCD(true)
   }
   const editHandle= () => {
-    setData(site)
-    setOpenMSD(true)
+    {
+      query.length > 3 ?
+      (
+        setData(children),
+        setOpenMCUD(true)
+      )
+      :
+      (
+        setData(site),
+        setOpenMSD(true)
+      )
+    }
   }
   return (
     <div className="lg:flex lg:items-center lg:justify-between mb-4">
@@ -87,17 +103,25 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) =
           </button>
         </span>
 
-        <span className="sm:ml-3">
-          <button
-            type="button"
-            className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            onClick={() => addHandle()}
-          >
-            <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
-            {/* <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" /> */}
-            Add Page
-          </button>
-        </span>
+        {
+          ['ecommerce', 'page'].includes(children?.type!)
+          
+           ? 
+
+           <span className="sm:ml-3">
+           <button
+             type="button"
+             className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+             onClick={() => addHandle()}
+           >
+             <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
+             {/* <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" /> */}
+             Add Page
+           </button>
+         </span>
+            :
+            null
+        }
 
         {/* Dropdown */}
         <Menu as="div" className="relative ml-3 sm:hidden">
@@ -139,8 +163,13 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) =
             </Menu.Items>
           </Transition>
         </Menu>
-        <ModalSiteAntd openMSD={openMSD} setOpenMSD={setOpenMSD} site={data!} /> 
-        <ModalChildrenAntd openMCD={openMCD} setOpenMCD={setOpenMCD}  /> 
+        {
+          query.length > 3 ? 
+          <ModalChildrenUpdateAntd openMCUD={openMCUD} setOpenMCUD={setOpenMCUD} children={data!}  /> 
+          :
+          <ModalSiteAntd openMSD={openMSD} setOpenMSD={setOpenMSD} site={data!} /> 
+        }
+        <ModalChildrenCreatedAntd openMCCD={openMCCD} setOpenMCCD={setOpenMCCD} type={children?.type!} /> 
 
       </div>
     </div>
