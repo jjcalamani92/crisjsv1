@@ -1,11 +1,7 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { FC, Fragment } from 'react'
 import { useRouter } from 'next/router'
-import Link from 'next/link';
 import Head from 'next/head';
-import { HeaderDashboard } from '../components/header/headerDashboard';
-import { Main } from '../components/main';
-import { Notification } from '../components/notification';
 import { Sidebar } from '../components/header/sidebar';
 
 
@@ -25,7 +21,7 @@ export const LayoutDashboard: FC<LayoutDashboard> = ({ children }) => {
           <title>Dashboard</title>
           <meta name="keywords" />
 
-          <link rel="icon" href={"/logo.svg"} />
+          <link rel="icon" href={"https://res.cloudinary.com/dqsbh2kn0/image/upload/v1662447369/qgy7hht1b12tfc8tyrx8.jpg"} />
         </Head>
         {/* <HeaderDashboard /> */}
         <Sidebar>

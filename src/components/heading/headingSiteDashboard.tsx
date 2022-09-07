@@ -14,6 +14,10 @@ import { Menu, Transition } from '@headlessui/react'
 import { classNames } from '../../../utils/function'
 import { FolderAddOutlined } from '@ant-design/icons'
 import { ModalSiteAntd } from '../form'
+import { useQuery } from '@tanstack/react-query';
+import { useRouter } from 'next/router'
+import { getHeadingTitleDashboard, getQuery, getSite } from '../../../utils/functionV3'
+import { useGetSites } from '../../../graphql/react-query/reactQuery'
 
 interface HeadingSiteDashboard {
   title: string
@@ -21,7 +25,12 @@ interface HeadingSiteDashboard {
 }
 
 export const HeadingSiteDashboard:FC<HeadingSiteDashboard> = ({title}) => {
-
+  const {asPath} = useRouter()
+  const query = getQuery(asPath)
+  const { data: sites } = useGetSites();
+  const site = getSite(sites!, asPath)
+  
+  
   const addHandle = () => {
     setOpenMSD(true)
   }
@@ -52,7 +61,12 @@ export const HeadingSiteDashboard:FC<HeadingSiteDashboard> = ({title}) => {
         </div>
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
-        <span className="hidden sm:block">
+        {/* {
+          query.length === 2 && 
+          <>
+            </>
+        } */}
+        {/* <span className="hidden sm:block">
           <button
             type="button"
             className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -66,11 +80,11 @@ export const HeadingSiteDashboard:FC<HeadingSiteDashboard> = ({title}) => {
           <button
             type="button"
             className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          >
+            >
             <LinkIcon className="-ml-1 mr-2 h-5 w-5 text-gray-500" aria-hidden="true" />
             View
           </button>
-        </span>
+        </span> */}
 
         <span className="sm:ml-3">
           <button

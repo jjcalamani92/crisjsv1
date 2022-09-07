@@ -24,6 +24,7 @@ import { SiteV2 } from '../../../interfaces/siteV2';
 import { graphQLClientS } from '../../../graphql/react-query/graphQLClient';
 import { ADD_SITE, UPDATE_SITE } from '../../../graphql';
 import { getQuery, getURL } from '../../../utils/functionV3';
+import { domains, typeSite } from '../../../utils/const';
 
 
 
@@ -80,7 +81,7 @@ export const ModalSiteAntd: FC<ModalSiteAntd> = ({ openMSD, setOpenMSD, site }) 
   };
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
-      <Select style={{ width: 75 }}>
+      <Select style={{ width: 75 }} defaultValue='591'>
         <Option value="591">+591</Option>
         {/* <Option value="87">+87</Option> */}
       </Select>
@@ -92,7 +93,7 @@ export const ModalSiteAntd: FC<ModalSiteAntd> = ({ openMSD, setOpenMSD, site }) 
     if (!value) {
       setAutoCompleteResult([]);
     } else {
-      setAutoCompleteResult(['.com', '.org', '.net', '.vercel.app'].map(domain => `${value}${domain}`));
+      setAutoCompleteResult(domains.map(domain => `${value}${domain}`));
     }
   };
 
@@ -211,10 +212,13 @@ export const ModalSiteAntd: FC<ModalSiteAntd> = ({ openMSD, setOpenMSD, site }) 
                       rules={[{ required: true, message: 'Please select type!' }]}
                     >
                       <Select placeholder="select your type">
-                        <Option value="ecommerce">E-commerce</Option>
-                        <Option value="education">Education</Option>
-                        <Option value="marketing">Marketing</Option>
-                        <Option value="food">Food</Option>
+                        {
+                          typeSite.map((data, i) => (
+
+                            <Option key={i} value={data.value}>{data.name}</Option>
+                          ))
+                        }
+                        
                       </Select>
                     </Form.Item>
 

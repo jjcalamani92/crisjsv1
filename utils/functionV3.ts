@@ -84,7 +84,32 @@ export const getChildren5 = (sites: SiteV2[], asPath: string) => {
   const query = getQuery(asPath);
   return getChildrens5(sites, asPath)?.find((data) => data.slug === query[8]);
 };
-
+//TODO: GetTitleHeadingDashboard TODO:
+export const getHeadingTitleDashboard = (sites:SiteV2[], asPath:string) => {
+  const query = getQuery(asPath);
+  if (query.length === 3) {
+    return getSite(sites, asPath)?.data.name
+  } else
+  if (query.length === 4) {
+    return getChildren0(sites, asPath)?.seo.name
+  } else
+  if (query.length === 5) {
+    return getChildren1(sites, asPath)?.seo.name
+  } else 
+  if (query.length === 6) {
+    return getChildren2(sites, asPath)?.seo.name
+  } else 
+  if (query.length === 7) {
+    return getChildren3(sites, asPath)?.seo.name
+  } else 
+  if (query.length === 8) {
+    return getChildren4(sites, asPath)?.seo.name
+  }  else 
+  if (query.length === 9) {
+    return getChildren5(sites, asPath)?.seo.name
+  }  
+}
+//TODO: GetChildren TODO:
 export const getChildren = (sites:SiteV2[], asPath:string) => {
   const query = getQuery(asPath);
   if (query.length === 4) {

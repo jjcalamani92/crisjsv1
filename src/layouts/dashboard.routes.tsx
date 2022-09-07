@@ -35,7 +35,7 @@ export const Dashboard: FC<Dashboard> = ({ }) => {
     case getSitesAsPaths(sites!).find(data => data === asPath):
       return (
         <>
-          <HeadingChildrenDashboard title="Pages" />
+          <HeadingChildrenDashboard />
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
             {getChildrens0(sites!, asPath)!.map((children, i: number) => (
               <CardChildrenDashboard key={i} children={children} />
@@ -45,7 +45,7 @@ export const Dashboard: FC<Dashboard> = ({ }) => {
     case getChildren0AsPaths(sites!).find(data => data === asPath):
       return (
         <>
-          <HeadingChildrenDashboard title="Pages" />
+          <HeadingChildrenDashboard />
           {
             getChildrens1(sites!, asPath) &&
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
@@ -58,7 +58,7 @@ export const Dashboard: FC<Dashboard> = ({ }) => {
     case getChildren1AsPaths(sites!).find(data => data === asPath):
       return (
         <>
-          <HeadingChildrenDashboard title="Pages" />
+          <HeadingChildrenDashboard />
           {
             getChildrens2(sites!, asPath) &&
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
@@ -71,7 +71,7 @@ export const Dashboard: FC<Dashboard> = ({ }) => {
     case getChildren2AsPaths(sites!).find(data => data === asPath):
       return (
         <>
-          <HeadingChildrenDashboard title="Pages" />
+          <HeadingChildrenDashboard />
           {
             getChildrens3(sites!, asPath) &&
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">

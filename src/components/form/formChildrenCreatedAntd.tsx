@@ -27,14 +27,9 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ADD_CHILDREN_0, ADD_CHILDREN_1, ADD_CHILDREN_2, ADD_CHILDREN_3, ADD_CHILDREN_4, ADD_CHILDREN_5, UPDATE_CHILDREN_0, UPDATE_CHILDREN_1, UPDATE_CHILDREN_2, UPDATE_CHILDREN_3, UPDATE_CHILDREN_4, UPDATE_CHILDREN_5 } from '../../../graphql';
 import { ChildrenV2 } from '../../../interfaces/siteV2';
 import { graphQLClientS } from '../../../graphql/react-query/graphQLClient';
+import { typeChildren, typeEcommerce } from '../../../utils/const';
 
 
-interface Option {
-  value: string;
-  label: string;
-  children?: Option[];
-  
-}
 
 interface ModalChildrenCreatedAntd {
   openMCCD: boolean
@@ -285,10 +280,13 @@ export const ModalChildrenCreatedAntd: FC<ModalChildrenCreatedAntd> = ({ openMCC
                         rules={[{ required: true, message: 'Please pick an type!' }]}
                       >
                         <Radio.Group onChange={onChangeRadio} value={radioValue}>
-                          <Radio.Button value="page">Page</Radio.Button>
-                          <Radio.Button value="ecommerce">E-Commerce</Radio.Button>
-                          <Radio.Button value="blog">Blog</Radio.Button>
-                          <Radio.Button value="service">Services</Radio.Button>
+                          {
+                            typeChildren.map((data,i )=> (
+
+                              <Radio.Button key={i} value={data.value}>{data.name}</Radio.Button>
+                            ))
+                          }
+                          
                         </Radio.Group>
                       </Form.Item>
                       :
@@ -296,39 +294,16 @@ export const ModalChildrenCreatedAntd: FC<ModalChildrenCreatedAntd> = ({ openMCC
 
                         <Form.Item name="type" label="Type Page" className='col-span-2' rules={[{ required: true, message: 'Please pick an type!' }]}>
                           <Radio.Group>
-                            <Radio value="clothing">Ropa</Radio>
-                            <Radio value="furniture">Muebles</Radio>
-                            <Radio value="teddy">Peluches</Radio>
-                            <Radio value="jeweler">Joyeros</Radio>
-                            <Radio value="gift">Regalos</Radio>
-                            <Radio value="1">item 3</Radio>
-                            <Radio value="2">item 1</Radio>
-                            <Radio value="3">item 2</Radio>
-                            <Radio value="4">item 3</Radio>
-                            <Radio value="5">item 1</Radio>
-                            <Radio value="6">item 2</Radio>
-                            <Radio value="7">item 3</Radio>
-                          </Radio.Group>
-                        </Form.Item>
-                      :
-                      type === 'education' ?
+                          {
+                            typeEcommerce.map((data,i )=> (
 
-                        <Form.Item name="type" label="Type Page" className='col-span-2' rules={[{ required: true, message: 'Please pick an type!' }]}>
-                          <Radio.Group>
-                            <Radio value="clothing">Ropa</Radio>
-                            <Radio value="furniture">Muebles</Radio>
-                            <Radio value="teddy">Peluches</Radio>
-                            <Radio value="jeweler">Joyeros</Radio>
-                            <Radio value="gift">Regalos</Radio>
-                            <Radio value="1">item 3</Radio>
-                            <Radio value="2">item 1</Radio>
-                            <Radio value="3">item 2</Radio>
-                            <Radio value="4">item 3</Radio>
-                            <Radio value="5">item 1</Radio>
-                            <Radio value="6">item 2</Radio>
-                            <Radio value="7">item 3</Radio>
+                              <Radio key={i} value={data.value}>{data.name}</Radio>
+                            ))
+                          }
+                           
                           </Radio.Group>
                         </Form.Item>
+                    
                         : null
                     }
                         

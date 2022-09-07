@@ -36,7 +36,7 @@ export const LayoutPages: FC<Layout> = ({
 				<meta property="og:description" content={seo ? seo.description : 'description'} />
 				<meta property="og:type" content="og:product" />
 				{seo && seo.image && <meta property="og:image" content={seo ? seo?.image.src :'image'} />}
-				<link rel="icon" href={"/logo.svg"} />
+				<link rel="icon" href={"https://res.cloudinary.com/dqsbh2kn0/image/upload/v1662447369/qgy7hht1b12tfc8tyrx8.jpg"} />
 			</Head>
       <HeaderPage />
 			<Main>

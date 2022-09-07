@@ -14,25 +14,25 @@ import {
 import { Menu, Transition } from '@headlessui/react'
 import { classNames } from '../../../utils/function'
 import { ModalChildrenAntd, ModalChildrenCreatedAntd, ModalChildrenUpdateAntd, ModalSiteAntd } from '../form'
-import { EditOutlined, FileAddOutlined } from '@ant-design/icons'
-import { getChildren, getChildren0, getQuery, getSite } from '../../../utils/functionV3'
+import { AppstoreAddOutlined, EditOutlined, FileAddOutlined } from '@ant-design/icons'
+import { getChildren, getChildren0, getHeadingTitleDashboard, getQuery, getSite } from '../../../utils/functionV3'
 import { useRouter } from 'next/router'
 import { useGetSites } from '../../../graphql/react-query/reactQuery'
 
 interface HeadingChildrenDashboard {
-  title: string
+  
 }
 
-export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) => {
+export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
   const { asPath } = useRouter()
   const query = getQuery(asPath)
-  // console.log(query.length);
   
   const { data: sites } = useGetSites();
 
   const site = getSite(sites!, asPath)
   const children = getChildren(sites!, asPath)
-  console.log(children);
+  const title = getHeadingTitleDashboard(sites!, asPath)
+  
 
   const [data, setData] = useState<any>()
   const [openMSD, setOpenMSD] = useState(false)
@@ -115,14 +115,31 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) =
              onClick={() => addHandle()}
            >
              <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
+
+            {/* <AppstoreAddOutlined className='mr-2' style={{ fontSize: '20px' }}/> */}
+             {/* <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/> */}
              {/* <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" /> */}
-             Add Page
+             { children?.type === 'page' ? 'Add Page' : 'Add Category'}
            </button>
          </span>
             :
             null
         }
+        {
+          ['clothing', 'jeweler', "furniture"].includes(children?.type!) &&
+          <span className="sm:ml-3">
+           <button
+             type="button"
+             className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+             onClick={() => addHandle()}
+           >
+            <AppstoreAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
 
+             {/* <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" /> */}
+             Add Product
+           </button>
+         </span>
+        }
         {/* Dropdown */}
         <Menu as="div" className="relative ml-3 sm:hidden">
           <Menu.Button className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">

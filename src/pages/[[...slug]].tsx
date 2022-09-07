@@ -7,7 +7,7 @@ import { useSession } from 'next-auth/react';
 import { graphQLClientS } from '../../graphql/react-query/graphQLClient'
 import { SITESV2, SITEV2 } from '../../graphql'
 import { paths } from '../../utils/functionV2'
-import { getQuery, getURL, capitalizar } from '../../utils/functionV3';
+import { getQuery } from '../../utils/functionV3';
 
 
 interface Props {
@@ -18,9 +18,6 @@ const Index: FC<Props> = () => {
   const { asPath } = useRouter()
   const query = getQuery(asPath)
   const { data: session, status } = useSession()
-  // console.log(paths(siteV2));
-
-  // console.log(getQuery(asPath).at(1));
   switch (true) {
     case query && query[0] === "dashboard":
       return (
