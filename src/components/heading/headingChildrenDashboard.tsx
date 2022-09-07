@@ -32,6 +32,8 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
 
   const site = getSite(sites!, asPath)
   const children = getChildren(sites!, asPath)
+  // console.log(children);
+  
   const title = getHeadingTitleDashboard(sites!, asPath)
   
 
@@ -45,15 +47,15 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
   }
   const editHandle= () => {
     {
-      query.length > 3 ?
-      (
-        setData(children),
-        setOpenMCUD(true)
-      )
-      :
+      query.length < 3 ?
       (
         setData(site),
         setOpenMSD(true)
+      )
+      :
+      (
+        setData(children),
+        setOpenMCUD(true)
       )
     }
   }
@@ -69,18 +71,7 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
             <LinkOutlined className='mr-2' style={{ fontSize: '15px' }}/>
             {site?.data.url}
           </div>
-          {/* <div className="mt-2 flex items-center text-sm text-gray-500">
-            <MapPinIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-            Remote
-          </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
-            <CurrencyDollarIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-            $120k &ndash; $140k
-          </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
-            <CalendarIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-            Closing on January 9, 2020
-          </div> */}
+
         </div>
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">

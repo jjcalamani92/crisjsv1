@@ -245,9 +245,9 @@ export const ModalChildrenUpdateAntd: FC<ModalChildrenUpdateAntd> = ({ openMCUD,
                     onFinish={onFinish}
                     initialValues={{
                       name: children ? children.seo.name : "",
-                      description: children ? children.seo.description : "",
+                      description: children ? children.seo.description : " description page",
                       type: children ? children.type : "",
-                      alt: children ? children.seo.image.alt : "",
+                      alt: children ? children.seo.image.alt : "description image",
                      
                     }}
                     scrollToFirstError
@@ -278,7 +278,7 @@ export const ModalChildrenUpdateAntd: FC<ModalChildrenUpdateAntd> = ({ openMCUD,
                     </Form.Item>
 
                     {
-                      ['page'].includes(type) || query.length === 3 ?
+                      ['page', 'ecommerce'].includes(type) || query.length === 3 ?
                         <Form.Item
                         name="type"
                         label="Type Page"

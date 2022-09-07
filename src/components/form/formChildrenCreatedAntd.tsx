@@ -240,9 +240,9 @@ export const ModalChildrenCreatedAntd: FC<ModalChildrenCreatedAntd> = ({ openMCC
                     onFinish={onFinish}
                     initialValues={{
                       name: children ? children.seo.name : "",
-                      description: children ? children.seo.description : "",
+                      description: children ? children.seo.description : "description page",
                       type: children ? children.type : "",
-                      alt: children ? children.seo.image.alt : "",
+                      alt: children ? children.seo.image.alt : "description image",
                      
                     }}
                     scrollToFirstError
