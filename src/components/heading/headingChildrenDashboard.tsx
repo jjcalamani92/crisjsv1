@@ -104,7 +104,7 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) =
         </span>
 
         {
-          ['ecommerce', 'page'].includes(children?.type!)
+          ['ecommerce', 'page'].includes(children?.type!) || query.length === 3
           
            ? 
 

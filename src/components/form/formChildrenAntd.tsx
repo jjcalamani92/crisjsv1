@@ -47,7 +47,7 @@ export const ModalChildrenAntd: FC<ModalChildrenAntd> = ({ openMCD, setOpenMCD, 
   
   const { asPath, push, replace } = useRouter()
   const query = getQuery(asPath)
-  console.log(children);
+  // console.log(children);
   
   const queryClient = useQueryClient()
   const cancelButtonRef = useRef(null)
