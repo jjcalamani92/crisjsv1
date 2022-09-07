@@ -165,7 +165,7 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) =
         </Menu>
         {
           query.length > 3 ? 
-          <ModalChildrenUpdateAntd openMCUD={openMCUD} setOpenMCUD={setOpenMCUD} children={data!}  /> 
+          <ModalChildrenUpdateAntd openMCUD={openMCUD} setOpenMCUD={setOpenMCUD} children={data!} type={children?.type!}  /> 
           :
           <ModalSiteAntd openMSD={openMSD} setOpenMSD={setOpenMSD} site={data!} /> 
         }

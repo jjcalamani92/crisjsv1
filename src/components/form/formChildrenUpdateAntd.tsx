@@ -39,9 +39,10 @@ interface ModalChildrenUpdateAntd {
   openMCUD: boolean
   setOpenMCUD: React.Dispatch<React.SetStateAction<boolean>>
   children?: ChildrenV2
+  type: string
 }
 
-export const ModalChildrenUpdateAntd: FC<ModalChildrenUpdateAntd> = ({ openMCUD, setOpenMCUD, children }) => {
+export const ModalChildrenUpdateAntd: FC<ModalChildrenUpdateAntd> = ({ openMCUD, setOpenMCUD, children, type }) => {
 
   
   
@@ -274,12 +275,8 @@ export const ModalChildrenUpdateAntd: FC<ModalChildrenUpdateAntd> = ({ openMCUD,
                     >
                       <Input.TextArea rows={5}  showCount maxLength={1000} />
                     </Form.Item>
-                    {/* {
-                      
-                      children?.type === 'ecommerce' ?
-                        :
-                        
-                    } */}
+                    {
+                      ['page', 'ecommerce'].includes(type) || query.length === 3 ?
                         <Form.Item
                         name="type"
                         label="Type Page"
@@ -293,7 +290,60 @@ export const ModalChildrenUpdateAntd: FC<ModalChildrenUpdateAntd> = ({ openMCUD,
                           <Radio.Button value="service">Services</Radio.Button>
                         </Radio.Group>
                       </Form.Item>
-                      {
+                      :
+                      ['clothing', 'teddy', 'jeweler', 'gift', 'furniture'].includes(type) ?
+
+                        <Form.Item name="type" label="Type Page" className='col-span-2' rules={[{ required: true, message: 'Please pick an type!' }]}>
+                          <Radio.Group>
+                            <Radio value="clothing">Ropa</Radio>
+                            <Radio value="furniture">Muebles</Radio>
+                            <Radio value="teddy">Peluches</Radio>
+                            <Radio value="jeweler">Joyeros</Radio>
+                            <Radio value="gift">Regalos</Radio>
+                            <Radio value="1">item 3</Radio>
+                            <Radio value="2">item 1</Radio>
+                            <Radio value="3">item 2</Radio>
+                            <Radio value="4">item 3</Radio>
+                            <Radio value="5">item 1</Radio>
+                            <Radio value="6">item 2</Radio>
+                            <Radio value="7">item 3</Radio>
+                          </Radio.Group>
+                        </Form.Item>
+                      :
+                      type === 'education' ?
+
+                        <Form.Item name="type" label="Type Page" className='col-span-2' rules={[{ required: true, message: 'Please pick an type!' }]}>
+                          <Radio.Group>
+                            <Radio value="clothing">Ropa</Radio>
+                            <Radio value="furniture">Muebles</Radio>
+                            <Radio value="teddy">Peluches</Radio>
+                            <Radio value="jeweler">Joyeros</Radio>
+                            <Radio value="gift">Regalos</Radio>
+                            <Radio value="1">item 3</Radio>
+                            <Radio value="2">item 1</Radio>
+                            <Radio value="3">item 2</Radio>
+                            <Radio value="4">item 3</Radio>
+                            <Radio value="5">item 1</Radio>
+                            <Radio value="6">item 2</Radio>
+                            <Radio value="7">item 3</Radio>
+                          </Radio.Group>
+                        </Form.Item>
+                        : null
+                    }
+                        {/* <Form.Item
+                        name="type"
+                        label="Type Page"
+                        className='col-span-2'
+                        rules={[{ required: true, message: 'Please pick an type!' }]}
+                      >
+                        <Radio.Group onChange={onChangeRadio} value={radioValue}>
+                          <Radio.Button value="page">Page</Radio.Button>
+                          <Radio.Button value="ecommerce">E-Commerce</Radio.Button>
+                          <Radio.Button value="blog">Blog</Radio.Button>
+                          <Radio.Button value="service">Services</Radio.Button>
+                        </Radio.Group>
+                      </Form.Item> */}
+                      {/* {
                         radioValue === "ecommerce" &&
                         <Form.Item name="type" label="" className='col-span-2'>
                           <Radio.Group>
@@ -311,7 +361,7 @@ export const ModalChildrenUpdateAntd: FC<ModalChildrenUpdateAntd> = ({ openMCUD,
                             <Radio value="7">item 3</Radio>
                           </Radio.Group>
                         </Form.Item>
-                        }
+                        } */}
 
                     <Form.Item
                       label="Add Image"
