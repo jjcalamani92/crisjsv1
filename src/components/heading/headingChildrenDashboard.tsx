@@ -1,5 +1,5 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { FC, Fragment } from 'react'
+import { FC, Fragment, useState } from 'react'
 import {
   BriefcaseIcon,
   CalendarIcon,
@@ -12,12 +12,34 @@ import {
 } from '@heroicons/react/20/solid'
 import { Menu, Transition } from '@headlessui/react'
 import { classNames } from '../../../utils/function'
+import { ModalChildrenAntd, ModalSiteAntd } from '../form'
+import { EditOutlined, FileAddOutlined } from '@ant-design/icons'
+import { getSite } from '../../../utils/functionV3'
+import { useRouter } from 'next/router'
+import { useGetSites } from '../../../graphql/react-query/reactQuery'
 
 interface HeadingChildrenDashboard {
   title: string
 }
 
 export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) => {
+  const { asPath } = useRouter()
+  const { data: sites } = useGetSites();
+
+  const site = getSite(sites!, asPath)
+  // console.log(site);
+  
+  const [data, setData] = useState<any>()
+  const [openMSD, setOpenMSD] = useState(false)
+  const [openMCD, setOpenMCD] = useState(false)
+  const addHandle = () => {
+    setOpenMCD(true)
+
+  }
+  const editHandle= () => {
+    setData(site)
+    setOpenMSD(true)
+  }
   return (
     <div className="lg:flex lg:items-center lg:justify-between mb-4">
       <div className="min-w-0 flex-1">
@@ -48,8 +70,9 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) =
           <button
             type="button"
             className="inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            onClick={() => editHandle()}
           >
-            <PencilIcon className="-ml-1 mr-2 h-5 w-5 text-gray-500" aria-hidden="true" />
+            <EditOutlined className='mr-2' style={{ fontSize: '20px' }}/>
             Edit
           </button>
         </span>
@@ -68,9 +91,11 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) =
           <button
             type="button"
             className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            onClick={() => addHandle()}
           >
-            <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
-            Publish
+            <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
+            {/* <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" /> */}
+            Add Page
           </button>
         </span>
 
@@ -114,6 +139,9 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({title}) =
             </Menu.Items>
           </Transition>
         </Menu>
+        <ModalSiteAntd openMSD={openMSD} setOpenMSD={setOpenMSD} site={data!} /> 
+        <ModalChildrenAntd openMCD={openMCD} setOpenMCD={setOpenMCD}  /> 
+
       </div>
     </div>
   )

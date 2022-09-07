@@ -8,8 +8,8 @@ export const ADD_SITE = gql`
   }
 `;
 export const UPDATE_SITE = gql`
-  mutation UpdateSite($_id:ID!, $input: UpdateSiteInput!) {
-    updateSite(_id:$_id, input: $input) {
+  mutation UpdateSiteV2($_id:ID!, $input: UpdateSiteV2!) {
+    updateSiteV2(_id:$_id, input: $input) {
 			_id
     }
   }

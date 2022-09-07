@@ -44,28 +44,10 @@ export const CardSiteDashboard:FC<CardSiteDashboard> = ({ site}) => {
 						timer: 1000,
 						showConfirmButton: false,
 					})
-          // let REMOVE!: string
-          // let PRODUCTS
-          // if (query.slug![2] ==='jeweler') {
-          //   REMOVE = DELETE_JEWELER_PRODUCT 
-          //   PRODUCTS = 'get-products-jeweler'
-          // } else 
-          // if (query.slug![2] ==='teddy') {
-          //   REMOVE = DELETE_TEDDY_PRODUCT 
-          //   PRODUCTS = 'get-products-teddy'
-          // } else 
-          // if (query.slug![2] ==='furniture') {
-          //   REMOVE = DELETE_FURNITURE_PRODUCT 
-          //   PRODUCTS = 'get-products-furniture'
-          // } else 
-          // if (query.slug![2] ==='gift') {
-          //   REMOVE = DELETE_GIFT_PRODUCT
-          //   PRODUCTS = 'get-products-gift'
-          // }
+
         await graphQLClientS.request(DELETE_SITE,  {_id: site?._id})
         queryClient.invalidateQueries(["get-sites"])
 
-        // mutate([PRODUCTS, { site: process.env.API_SITE }])
 			}
 		})
   }

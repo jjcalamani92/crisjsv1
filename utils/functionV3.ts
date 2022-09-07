@@ -11,6 +11,18 @@ export function capitalizar(str: string) {
       return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase();
     });
 }
+export function slug(str: string) {
+  return str
+    .trim()
+    .toLowerCase()
+    .replace(/[\u002F]/g, "")
+    .replace(/-/g, " ")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/-/g, "")
+    .replace(/\s+/g, " ")
+    .replace(/ /g, "-");
+}
 export const getURL = (asPath: string) => {
   let url = asPath.split("/");
   url.length = url.length - 1;

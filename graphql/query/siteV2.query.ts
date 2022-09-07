@@ -78,6 +78,10 @@ export const SITESV2 = gql`
       _id
       data {
         name
+        numberPhone
+        address
+        description
+        url
       }
       type
       dataBase {
