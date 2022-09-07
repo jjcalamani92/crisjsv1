@@ -14,10 +14,11 @@ import {
 import { Menu, Transition } from '@headlessui/react'
 import { classNames } from '../../../utils/function'
 import { ModalChildrenAntd, ModalChildrenCreatedAntd, ModalChildrenUpdateAntd, ModalSiteAntd } from '../form'
-import { AppstoreAddOutlined, EditOutlined, FileAddOutlined } from '@ant-design/icons'
+import { AppstoreAddOutlined, EditOutlined, FileAddOutlined, LinkOutlined } from '@ant-design/icons'
 import { getChildren, getChildren0, getHeadingTitleDashboard, getQuery, getSite } from '../../../utils/functionV3'
 import { useRouter } from 'next/router'
 import { useGetSites } from '../../../graphql/react-query/reactQuery'
+import { typeEcommerce } from '../../../utils/const'
 
 interface HeadingChildrenDashboard {
   
@@ -64,10 +65,11 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
         </h2>
         <div className="mt-1 flex flex-col sm:mt-0 sm:flex-row sm:flex-wrap sm:space-x-6">
           <div className="mt-2 flex items-center text-sm text-gray-500">
-            <BriefcaseIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
-            Full-time
+            {/* <BriefcaseIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" /> */}
+            <LinkOutlined className='mr-2' style={{ fontSize: '15px' }}/>
+            {site?.data.url}
           </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
+          {/* <div className="mt-2 flex items-center text-sm text-gray-500">
             <MapPinIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
             Remote
           </div>
@@ -78,7 +80,7 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
           <div className="mt-2 flex items-center text-sm text-gray-500">
             <CalendarIcon className="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
             Closing on January 9, 2020
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="mt-5 flex lg:mt-0 lg:ml-4">
@@ -115,18 +117,14 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
              onClick={() => addHandle()}
            >
              <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
-
-            {/* <AppstoreAddOutlined className='mr-2' style={{ fontSize: '20px' }}/> */}
-             {/* <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/> */}
-             {/* <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" /> */}
-             { children?.type === 'page' ? 'Add Page' : 'Add Category'}
+             { children?.type === 'page' && query.length !== 3 ? 'Add Category' : 'Add Page'}
            </button>
          </span>
             :
             null
         }
         {
-          ['clothing', 'jeweler', "furniture"].includes(children?.type!) &&
+          typeEcommerce.map(data => data.value).includes(children?.type!) &&
           <span className="sm:ml-3">
            <button
              type="button"
@@ -134,9 +132,21 @@ export const HeadingChildrenDashboard:FC<HeadingChildrenDashboard> = ({}) => {
              onClick={() => addHandle()}
            >
             <AppstoreAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
-
-             {/* <CheckIcon className="-ml-1 mr-2 h-5 w-5" aria-hidden="true" /> */}
              Add Product
+           </button>
+         </span>
+        }
+        {
+          children?.type! === 'blog' &&
+          <span className="sm:ml-3">
+           <button
+             type="button"
+             className="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+             onClick={() => addHandle()}
+           >
+            {/* <FileAddOutlined /> */}
+            <FileAddOutlined className='mr-2' style={{ fontSize: '20px' }}/>
+             Add Blog
            </button>
          </span>
         }

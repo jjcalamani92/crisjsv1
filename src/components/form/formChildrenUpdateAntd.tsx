@@ -295,26 +295,7 @@ export const ModalChildrenUpdateAntd: FC<ModalChildrenUpdateAntd> = ({ openMCUD,
                         </Radio.Group>
                       </Form.Item>
                       :
-                      typeEcommerce.map(data => data.value).includes(type) ?
-
-                        <Form.Item name="type" label="Type Page" className='col-span-2' rules={[{ required: true, message: 'Please pick an type!' }]}>
-                          <Radio.Group>
-                            <Radio value="clothing">Ropa</Radio>
-                            <Radio value="furniture">Muebles</Radio>
-                            <Radio value="teddy">Peluches</Radio>
-                            <Radio value="jeweler">Joyeros</Radio>
-                            <Radio value="gift">Regalos</Radio>
-                            <Radio value="1">item 3</Radio>
-                            <Radio value="2">item 1</Radio>
-                            <Radio value="3">item 2</Radio>
-                            <Radio value="4">item 3</Radio>
-                            <Radio value="5">item 1</Radio>
-                            <Radio value="6">item 2</Radio>
-                            <Radio value="7">item 3</Radio>
-                          </Radio.Group>
-                        </Form.Item>
-                      
-                        : null
+                      null
                     }
                         
 
