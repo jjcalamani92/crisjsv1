@@ -50,6 +50,11 @@
   width: 20px !important;
   height: 20px !important;
 } */
+::selection {
+  background: black !important;
+  color: white !important;
+  text-shadow: 1px 1px #fff !important;
+}
 .sk-chase {
 	width: 40px;
 	height: 40px;
