@@ -21,6 +21,7 @@
     "dotenv": "^16.0.1",
     "graphql-request": "^4.3.0",
     "kutty": "^0.6.0",
+    "markdown-to-jsx": "^7.1.7",
     "mongoose": "^6.5.4",
     "next": "12.2.0",
     "next-auth": "^4.10.3",

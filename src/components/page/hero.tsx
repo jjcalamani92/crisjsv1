@@ -14,48 +14,9 @@ interface Props {
   title: string
 }
 
-export const Hero: FC<Props> = ({ title}) => {
-  // const { h1, span, p, imageSrc, imageAlt } = contain
-  return (
 
-      <div className="px-4 py-24 mx-auto max-w-7xl z-0">
 
-        <div className="w-full mx-auto text-left md:w-11/12 xl:w-9/12 md:text-center">
-          <h1 className="mb-6 text-5xl font-extrabold leading-none tracking-normal text-gray-900 md:text-6xl md:tracking-tight">
-            {title} <span className=" w-full text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-indigo-700 "> Devs  </span> 
-          </h1>
-          <p className="px-0 mb-6 text-lg text-gray-600 md:text-xl lg:px-24">
-          como
-          </p>
-          <div className="mt-5 sm:mt-8 sm:flex justify-center">
-            <div className="rounded-md shadow">
-              <Link href="/blog">
-                <a
-                  
-                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
-                >
-                  Get started
-                </a>
-              </Link>
-            </div>
-            <div className="mt-3 sm:mt-0 sm:ml-3">
-              <a
-                href="#"
-                className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10"
-                >
-                Live demo
-              </a>
-            </div>
-          </div>
-        </div>
-        
-                </div>
-    
-    
-  )
-}
-
-export const Hero2 = () => {
+export const Hero1 = () => {
   return(
     <section className="px-4 py-32 mx-auto max-w-7xl">
   <div className="w-full mx-auto text-left md:w-11/12 xl:w-8/12 md:text-center">
@@ -91,6 +52,99 @@ export const Hero2 = () => {
       </div>
     </div>
   </div>
+</section>
+
+  )
+}
+export const Hero2 = () => {
+  return(
+    <section>
+	<div className="bg-violet-600">
+		<div className="container flex flex-col items-center px-4 py-16 pb-24 mx-auto text-center lg:pb-56 md:py-32 md:px-10 lg:px-32 text-gray-900">
+			<h1 className="text-5xl font-bold leading-none sm:text-6xl xl:max-w-3xl text-gray-50">Provident blanditiis cum exercitationem</h1>
+			<p className="mt-6 mb-8 text-lg sm:mb-12 xl:max-w-3xl text-gray-50">Cupiditate minima voluptate temporibus quia? Architecto beatae esse ab amet vero eaque explicabo!</p>
+			<div className="flex flex-wrap justify-center">
+				<button type="button" className="px-8 py-3 m-2 text-lg font-semibold rounded bg-gray-100 text-gray-900">Get started</button>
+				<button type="button" className="px-8 py-3 m-2 text-lg border rounded border-gray-300 text-gray-50">Learn more</button>
+			</div>
+		</div>
+	</div>
+	<img src="https://source.unsplash.com/random/480x320" alt="" className="w-5/6 mx-auto mb-12 -mt-20 rounded-lg shadow-md lg:-mt-40 bg-gray-500" />
+</section>
+
+  )
+}
+export const Hero3 = () => {
+  return(
+    <section className="p-6 bg-gray-100 text-gray-800">
+	<div className="container grid gap-6 mx-auto text-center lg:grid-cols-2 xl:grid-cols-5">
+		<div className="w-full px-6 py-16 rounded-md sm:px-12 md:px-16 xl:col-span-2 bg-gray-50">
+			<span className="block mb-2 text-violet-600">Mamba design system</span>
+			<h1 className="text-5xl font-extrabold text-gray-900">Build it with Mamba</h1>
+			<p className="my-8">
+				<span className="font-medium text-gray-900">Modular and versatile.</span>Fugit vero facilis dolor sit neque cupiditate minus esse accusamus cumque at.
+			</p>
+			<form className="self-stretch space-y-3 ng-untouched ng-pristine ng-valid">
+				<div>
+					<label className="text-sm sr-only">Your name</label>
+					<input id="name" type="text" placeholder="Your name" className="w-full rounded-md focus:ring focus:ring-violet-600 border-gray-300" />
+				</div>
+				<div>
+					<label  className="text-sm sr-only">Email address</label>
+					<input id="lastname" type="text" placeholder="Email address" className="w-full rounded-md focus:ring focus:ring-violet-600 border-gray-300" />
+				</div>
+				<button type="button" className="w-full py-2 font-semibold rounded bg-violet-600 text-gray-50">Join the waitlist</button>
+			</form>
+		</div>
+		<img src="https://source.unsplash.com/random/480x360" alt="" className="object-cover w-full rounded-md xl:col-span-3 bg-gray-500" />
+	</div>
+</section>
+
+  )
+}
+export const Hero4 = () => {
+  return(
+<section className="bg-gray-100 text-gray-800">
+	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+		<div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+			<img src="assets/svg/Business_SVG.svg" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
+		</div>
+		<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+			<h1 className="text-5xl font-bold leading-none sm:text-6xl">Ac mattis
+				<span className="text-violet-600">senectus</span>erat pharetra
+			</h1>
+			<p className="mt-6 mb-8 text-lg sm:mb-12">Dictum aliquam porta in condimentum ac integer
+				{/* <br className="hidden md:inline lg:hidden">turpis pulvinar, est scelerisque ligula sem */}
+			</p>
+			<div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+				<a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-violet-600 text-gray-50">Suspendisse</a>
+				<a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded border-gray-800">Malesuada</a>
+			</div>
+		</div>
+	</div>
+</section>
+  )
+}
+export const Hero5 = () => {
+  return(
+<section className="bg-gray-100 text-gray-800">
+	<div className="container flex flex-col justify-center p-6 mx-auto sm:py-12 lg:py-24 lg:flex-row lg:justify-between">
+		<div className="flex flex-col justify-center p-6 text-center rounded-sm lg:max-w-md xl:max-w-lg lg:text-left">
+			<h1 className="text-5xl font-bold leading-none sm:text-6xl">Ac mattis
+				<span className="text-violet-600">senectus</span>erat pharetra
+			</h1>
+			<p className="mt-6 mb-8 text-lg sm:mb-12">Dictum aliquam porta in condimentum ac integer
+				{/* <br className="hidden md:inline lg:hidden">turpis pulvinar, est scelerisque ligula sem */}
+			</p>
+			<div className="flex flex-col space-y-4 sm:items-center sm:justify-center sm:flex-row sm:space-y-0 sm:space-x-4 lg:justify-start">
+				<a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold rounded bg-violet-600 text-gray-50">Suspendisse</a>
+				<a rel="noopener noreferrer" href="#" className="px-8 py-3 text-lg font-semibold border rounded border-gray-800">Malesuada</a>
+			</div>
+		</div>
+		<div className="flex items-center justify-center p-6 mt-8 lg:mt-0 h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128">
+			<img src="assets/svg/Business_SVG.svg" alt="" className="object-contain h-72 sm:h-80 lg:h-96 xl:h-112 2xl:h-128" />
+		</div>
+	</div>
 </section>
 
   )

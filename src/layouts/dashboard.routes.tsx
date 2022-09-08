@@ -3,17 +3,21 @@ import { useRouter } from "next/router"
 import { FC } from "react"
 import { useGetSites } from "../../graphql/react-query/reactQuery"
 import { getSitesAsPaths, getChildrens0, getChildren0AsPaths, getChildrens1, getChildren1AsPaths, getChildren2AsPaths, getChildrens2, getChildrens3 } from "../../utils/functionV3"
-import { Stats, Stats1, Stats2, CardSiteDashboard, HeadingSiteDashboard, HeadingChildrenDashboard } from "../components"
+import { Stats, Stats1, Stats2, CardSiteDashboard, HeadingSiteDashboard, HeadingChildrenDashboard, Hero1, Hero2, Hero3, Hero4, Hero5 } from "../components"
 import { CardChildrenDashboard } from "../components/card/cardChildren"
-
+import Markdown from "markdown-to-jsx";
+import * as hero from '../components';
+import markdownComponent from '../hook/useMarkdown';
 interface Dashboard {
 
 }
 export const Dashboard: FC<Dashboard> = ({ }) => {
   const { asPath } = useRouter()
   const { data: sites } = useGetSites();
+
+
   // console.log(getChildren2AsPaths(sites!));
-  
+
   switch (asPath) {
     case '/dashboard':
       return (
@@ -36,6 +40,7 @@ export const Dashboard: FC<Dashboard> = ({ }) => {
       return (
         <>
           <HeadingChildrenDashboard />
+
           <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
             {getChildrens0(sites!, asPath)!.map((children, i: number) => (
               <CardChildrenDashboard key={i} children={children} />
@@ -46,26 +51,46 @@ export const Dashboard: FC<Dashboard> = ({ }) => {
       return (
         <>
           <HeadingChildrenDashboard />
+
+          {
+            markdownComponent(Hero1)
+          }
+
+          {
+            markdownComponent(Hero2)
+          }
+          {
+            markdownComponent(Hero3)
+          }
+
+          {
+            markdownComponent(Hero4)
+          }
+
+          {
+            markdownComponent(Hero5)
+          }
           {
             getChildrens1(sites!, asPath) &&
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
-            {getChildrens1(sites!, asPath)!.map((children, i: number) => (
-              <CardChildrenDashboard key={i} children={children} />
-            ))}
-          </div>
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
+              {getChildrens1(sites!, asPath)!.map((children, i: number) => (
+                <CardChildrenDashboard key={i} children={children} />
+              ))}
+            </div>
           }
         </>)
     case getChildren1AsPaths(sites!).find(data => data === asPath):
       return (
         <>
           <HeadingChildrenDashboard />
+
           {
             getChildrens2(sites!, asPath) &&
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
-            {getChildrens2(sites!, asPath)!.map((children, i: number) => (
-              <CardChildrenDashboard key={i} children={children} />
-            ))}
-          </div>
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
+              {getChildrens2(sites!, asPath)!.map((children, i: number) => (
+                <CardChildrenDashboard key={i} children={children} />
+              ))}
+            </div>
           }
         </>)
     case getChildren2AsPaths(sites!).find(data => data === asPath):
@@ -74,11 +99,11 @@ export const Dashboard: FC<Dashboard> = ({ }) => {
           <HeadingChildrenDashboard />
           {
             getChildrens3(sites!, asPath) &&
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
-            {getChildrens3(sites!, asPath)!.map((children, i: number) => (
-              <CardChildrenDashboard key={i} children={children} />
-            ))}
-          </div>
+            <div className="grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-6 ">
+              {getChildrens3(sites!, asPath)!.map((children, i: number) => (
+                <CardChildrenDashboard key={i} children={children} />
+              ))}
+            </div>
           }
         </>)
     default:
