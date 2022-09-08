@@ -8,7 +8,6 @@ const markdownComponent = (markdown: () => JSX.Element) => {
     <div className="my-2 bg-white">
 
       <Markdown 
-      
           options={{
             overrides: {
               Component: {

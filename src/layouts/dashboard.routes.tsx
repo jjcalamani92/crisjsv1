@@ -7,11 +7,22 @@ import { Stats, Stats1, Stats2, CardSiteDashboard, HeadingSiteDashboard, Heading
 import { CardChildrenDashboard } from "../components/card/cardChildren"
 import Markdown from "markdown-to-jsx";
 import * as hero from '../components';
+import "@uiw/react-md-editor/markdown-editor.css";
+import "@uiw/react-markdown-preview/markdown.css";
 import markdownComponent from '../hook/useMarkdown';
+import dynamic from "next/dynamic";
+import { useState } from "react";
+
+const MDEditor = dynamic(
+  () => import("@uiw/react-md-editor"),
+  { ssr: false }
+);
+
 interface Dashboard {
 
 }
 export const Dashboard: FC<Dashboard> = ({ }) => {
+  const [value, setValue] = useState<any>("**Hello world!!!**");
   const { asPath } = useRouter()
   const { data: sites } = useGetSites();
 
@@ -51,7 +62,7 @@ export const Dashboard: FC<Dashboard> = ({ }) => {
       return (
         <>
           <HeadingChildrenDashboard />
-
+          <MDEditor value={value} onChange={setValue} />
           {
             markdownComponent(Hero1)
           }
