@@ -4,6 +4,7 @@ export * from './header'
 export * from './heading'
 export * from './page'
 
+export * from './grid'
 export * from './login'
 export * from './main'
 export * from './notification'

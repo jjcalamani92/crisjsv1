@@ -24,12 +24,12 @@ export const Hero1 = () => {
     <p className="mb-6 text-lg text-gray-500 md:text-xl md:leading-normal">
       Were on a mission to bring transparency to finance. We charge as little as possible, and we always show you upfront. No hidden fees. No bad exchange rates. No surprises.
     </p>
-    <form className="grid w-full grid-cols-1 gap-3 pt-1 mx-auto mb-8 lg:grid-cols-6 md:w-7/12">
+    <form className="grid w-full grid-cols-1 gap-3 pt-1 mx-auto mb-8 lg:grid-cols-7 md:w-7/12">
       <label className="col-auto lg:col-span-4">
         <span className="sr-only">Your Email</span>
         <input className="mt-0 form-input form-input-lg" type="email" placeholder="Enter your email..."  />
       </label>
-      <button className="w-full col-auto btn btn-primary btn-lg lg:col-span-2" type="submit">Get Started</button>
+      <button className="w-full col-auto btn btn-primary btn-lg lg:col-span-3" type="submit">Get Started</button>
     </form>
     <div className="flex flex-col justify-start mb-3 space-x-0 space-y-2 text-xs text-gray-600 md:flex-row md:justify-center md:space-x-8 md:space-y-0">
       <div className="flex items-center">
@@ -146,6 +146,21 @@ export const Hero5 = () => {
 		</div>
 	</div>
 </section>
+
+  )
+}
+export const Hero6 = () => {
+  return(
+<div className="hero min-h-screen" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
+  <div className="hero-overlay bg-opacity-60"></div>
+  <div className="hero-content text-center text-neutral-content">
+    <div className="max-w-md">
+      <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+      <button className="btn btn-primary">Get Started</button>
+    </div>
+  </div>
+</div>
 
   )
 }
