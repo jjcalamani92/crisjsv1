@@ -62,7 +62,12 @@ export const Dashboard: FC<Dashboard> = ({ }) => {
       return (
         <>
           <HeadingChildrenDashboard />
-          <MDEditor value={value} onChange={setValue} />
+          
+          <div className="my-2">
+
+          <MDEditor value={value} onChange={setValue} height={500} enableScroll />
+          </div>
+          
           {
             markdownComponent(Hero1)
           }

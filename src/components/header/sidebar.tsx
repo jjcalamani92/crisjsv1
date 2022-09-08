@@ -310,7 +310,7 @@ export const Sidebar: FC<Sidebar> = ({ children }) => {
             </nav>
             {/* Navigation ends */}
             {/* Remove class [ h-64 ] when adding a card block */}
-            <div className="container py-6 h-auto px-6">
+            <div className="py-6 h-auto px-6">
               {/* Remove class [ border-dashed border-2 border-gray-300 ] to remove dotted border */}
               <div className="w-full h-auto ">{/* Place your content here */}
                 {children}
