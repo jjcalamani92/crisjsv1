@@ -4,9 +4,13 @@ interface Grid {
 }
 
 export const Grid: FC<Grid> = ({ children }) => {
-  const sm = '6'
+  const grid = {
+    _: '2',
+    sm: '3',
+    lg:'4',
+    xl: '6'}
   return (
-    <div className={`  grid grid-cols-2 gap-6 sm:grid-cols-3  lg:grid-cols-4 xl:grid-cols-${sm} `}>
+    <div className={`  grid grid-cols-${grid._} gap-3 sm:gap-6  sm:grid-cols-${grid.sm}  lg:grid-cols-${grid.lg} xl:grid-cols-${grid.xl}`}>
       {children}
     </div>
   )
